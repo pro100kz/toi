@@ -17,10 +17,9 @@
             font-family: 'Georgia', serif;
         }
 
-        /* ГЛАВНЫЙ ЭКРАН — ФОТО НА ВЕСЬ ЭКРАН */
+        /* ГЛАВНЫЙ ЭКРАН — КАРТИНКА КАК КАРТИНКА */
         .hero {
-            background: url('https://raw.githubusercontent.com/pro100kz/1/main/img/logo-lg.png') no-repeat center center;
-            background-size: cover;
+            background: #3e2723; /* Темный фон на случай, если картинка не загрузится */
             min-height: 100vh;
             width: 100%;
             display: flex;
@@ -28,28 +27,30 @@
             justify-content: center;
             text-align: center;
             position: relative;
-        }
-
-        /* Затемнение */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.35);
-            z-index: 1;
+            padding: 40px 20px;
         }
 
         .hero-content {
-            position: relative;
-            z-index: 2;
             color: white;
             padding: 20px;
             width: 100%;
             max-width: 500px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* КАРТИНКА СВЕРХУ */
+        .hero-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+            margin-bottom: 25px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .hero-content h1 {
@@ -218,10 +219,6 @@
             font-weight: bold;
         }
 
-        .contact-item a:active {
-            color: #c2185b;
-        }
-
         .whatsapp-note {
             font-size: 14px;
             color: #999;
@@ -237,8 +234,12 @@
             font-size: 16px;
         }
 
-        /* Адаптация под телефоны */
+        /* === АДАПТАЦИЯ ПОД ТЕЛЕФОН === */
         @media (max-width: 480px) {
+            .hero-image {
+                max-width: 300px;
+                margin-bottom: 20px;
+            }
             .hero-content h1 {
                 font-size: 36px;
                 letter-spacing: 1px;
@@ -265,9 +266,6 @@
                 font-size: 18px;
                 line-height: 1.6;
             }
-            .invitation-text .owners {
-                font-size: 16px;
-            }
             .contact-item {
                 padding: 10px 12px;
                 flex-direction: column;
@@ -286,13 +284,6 @@
             .venue-box h3 {
                 font-size: 22px;
             }
-            .venue-box p {
-                font-size: 15px;
-            }
-            .btn-map {
-                padding: 10px 25px;
-                font-size: 15px;
-            }
             .instagram-img {
                 max-width: 280px;
             }
@@ -303,6 +294,9 @@
         }
 
         @media (max-width: 380px) {
+            .hero-image {
+                max-width: 250px;
+            }
             .hero-content h1 {
                 font-size: 30px;
             }
@@ -321,8 +315,10 @@
             }
         }
 
-        /* Для больших экранов */
         @media (min-width: 1200px) {
+            .hero-image {
+                max-width: 600px;
+            }
             .hero-content h1 {
                 font-size: 72px;
             }
@@ -337,9 +333,12 @@
 </head>
 <body>
 
-<!-- ГЛАВНЫЙ ЭКРАН -->
+<!-- ГЛАВНЫЙ ЭКРАН — КАРТИНКА СВЕРХУ -->
 <section class="hero">
     <div class="hero-content">
+        <!-- КАРТИНКА -->
+        <img src="https://raw.githubusercontent.com/pro100kz/1/main/img/logo-lg.png" alt="Әрсен &amp; Айнар" class="hero-image">
+        
         <h1>Әрсен &amp; Айнар</h1>
         <p>үйлену тойына шақыру</p>
         <div class="date">12 қыркүйек 2026 жыл</div>
