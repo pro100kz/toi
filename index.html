@@ -2,7 +2,7 @@
 <html lang="kk">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <title>Әрсен &amp; Айнар — Үйлену тойы</title>
     
     <style>
@@ -15,14 +15,15 @@
         html, body {
             height: 100%;
             font-family: 'Georgia', serif;
+            background: #3e2723;
         }
 
-        /* ФОТО НА ВЕСЬ ЭКРАН */
+        /* ГЛАВНЫЙ ЭКРАН — ФОТО НА ВЕСЬ ЭКРАН */
         .hero {
             background: url('https://raw.githubusercontent.com/pro100kz/1/main/img/logo-lg.png') no-repeat center center;
-            background-size: cover; /* Растягиваем на весь экран */
-            background-attachment: fixed; /* Фиксируем фон */
-            height: 100vh; /* Высота = весь экран */
+            background-size: cover;
+            height: 100vh;
+            min-height: 100vh;
             width: 100%;
             display: flex;
             align-items: center;
@@ -31,7 +32,6 @@
             position: relative;
         }
 
-        /* Затемнение, чтобы текст читался */
         .hero::before {
             content: '';
             position: absolute;
@@ -39,7 +39,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.3); /* Чуть затемняем фон */
+            background: rgba(0, 0, 0, 0.35);
             z-index: 1;
         }
 
@@ -48,150 +48,354 @@
             z-index: 2;
             color: white;
             padding: 20px;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
         }
 
         .hero-content h1 {
-            font-size: 72px;
+            font-size: 48px;
             font-weight: bold;
-            text-shadow: 3px 3px 10px rgba(0,0,0,0.8);
-            margin-bottom: 10px;
+            text-shadow: 3px 3px 12px rgba(0,0,0,0.8);
+            margin-bottom: 8px;
+            letter-spacing: 2px;
         }
 
         .hero-content p {
-            font-size: 28px;
-            text-shadow: 3px 3px 10px rgba(0,0,0,0.8);
-            margin: 10px 0;
+            font-size: 24px;
+            text-shadow: 3px 3px 12px rgba(0,0,0,0.8);
+            margin: 6px 0;
+            letter-spacing: 4px;
         }
 
         .hero-content .date {
-            font-size: 24px;
+            font-size: 20px;
             color: #ffd700;
-            text-shadow: 3px 3px 10px rgba(0,0,0,0.8);
+            text-shadow: 3px 3px 12px rgba(0,0,0,0.8);
+            letter-spacing: 3px;
         }
 
-        .btn {
+        .btn-gold {
             display: inline-block;
             background: #ffd700;
             color: #3e2723;
-            padding: 12px 40px;
+            padding: 14px 35px;
             border-radius: 30px;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: bold;
             text-decoration: none;
             margin-top: 20px;
             border: 2px solid #000;
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            transition: 0.3s;
+            letter-spacing: 2px;
         }
 
-        .btn:hover {
-            background: #f0c000;
+        .btn-gold:active {
+            transform: scale(0.95);
         }
 
-        /* Остальные секции */
+        /* Секции */
         .section {
-            padding: 60px 20px;
-            max-width: 800px;
-            margin: 0 auto;
+            padding: 40px 20px;
             text-align: center;
+        }
+
+        .section-white {
+            background: #ffffff;
+        }
+
+        .section-beige {
+            background: #f5f0eb;
         }
 
         .section h2 {
-            font-size: 32px;
-            margin-bottom: 20px;
+            font-size: 28px;
+            margin-bottom: 15px;
+            font-weight: bold;
         }
 
         .section p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .invitation-text {
             font-size: 20px;
             line-height: 1.8;
             color: #333;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .contact {
+        .invitation-text .owners {
+            display: block;
+            margin-top: 15px;
+            font-size: 18px;
+            color: #777;
+        }
+
+        /* Instagram фото */
+        .instagram-img {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 16px;
+            box-shadow: 0 6px 30px rgba(0,0,0,0.15);
+            margin: 20px auto;
+            display: block;
+        }
+
+        /* Место проведения */
+        .venue-box {
             background: #f9f9f9;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 10px 0;
+            padding: 25px 20px;
+            border-radius: 16px;
+            max-width: 500px;
+            margin: 15px auto;
         }
 
-        .contact strong {
-            font-size: 18px;
-        }
-
-        .contact a {
+        .venue-box h3 {
+            font-size: 24px;
             color: #e91e63;
-            font-size: 18px;
-            text-decoration: none;
+            margin-bottom: 10px;
         }
 
+        .venue-box p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 5px 0;
+        }
+
+        .venue-box .address {
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .btn-map {
+            display: inline-block;
+            background: #e91e63;
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            margin-top: 10px;
+            border: none;
+            transition: 0.3s;
+        }
+
+        .btn-map:active {
+            transform: scale(0.95);
+        }
+
+        /* Контакты */
+        .contact-item {
+            background: #f9f9f9;
+            padding: 12px 15px;
+            border-radius: 10px;
+            margin: 8px auto;
+            max-width: 400px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-item strong {
+            font-size: 17px;
+            min-width: 80px;
+            text-align: left;
+        }
+
+        .contact-item a {
+            color: #e91e63;
+            font-size: 17px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact-item a:active {
+            color: #c2185b;
+        }
+
+        .whatsapp-note {
+            font-size: 14px;
+            color: #999;
+            margin-top: 15px;
+        }
+
+        /* Футер */
         footer {
             background: #3e2723;
-            color: white;
+            color: #ffffff;
             text-align: center;
             padding: 20px;
+            font-size: 16px;
         }
 
-        @media (max-width: 768px) {
+        /* Адаптация под телефоны */
+        @media (max-width: 480px) {
             .hero-content h1 {
-                font-size: 40px;
+                font-size: 36px;
+                letter-spacing: 1px;
             }
             .hero-content p {
                 font-size: 20px;
+                letter-spacing: 2px;
+            }
+            .hero-content .date {
+                font-size: 17px;
+            }
+            .btn-gold {
+                padding: 12px 28px;
+                font-size: 16px;
+                margin-top: 15px;
+            }
+            .section {
+                padding: 30px 15px;
+            }
+            .section h2 {
+                font-size: 24px;
+            }
+            .invitation-text {
+                font-size: 18px;
+                line-height: 1.6;
+            }
+            .invitation-text .owners {
+                font-size: 16px;
+            }
+            .contact-item {
+                padding: 10px 12px;
+                flex-direction: column;
+                gap: 4px;
+            }
+            .contact-item strong {
+                font-size: 15px;
+                min-width: auto;
+            }
+            .contact-item a {
+                font-size: 15px;
+            }
+            .venue-box {
+                padding: 20px 15px;
+            }
+            .venue-box h3 {
+                font-size: 22px;
+            }
+            .venue-box p {
+                font-size: 15px;
+            }
+            .btn-map {
+                padding: 10px 25px;
+                font-size: 15px;
+            }
+            .instagram-img {
+                max-width: 280px;
+            }
+            footer {
+                font-size: 14px;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .hero-content h1 {
+                font-size: 30px;
+            }
+            .hero-content p {
+                font-size: 17px;
+            }
+            .hero-content .date {
+                font-size: 15px;
+            }
+            .btn-gold {
+                padding: 10px 22px;
+                font-size: 14px;
+            }
+            .invitation-text {
+                font-size: 16px;
+            }
+        }
+
+        /* Для очень больших экранов */
+        @media (min-width: 1200px) {
+            .hero-content h1 {
+                font-size: 72px;
+            }
+            .hero-content p {
+                font-size: 32px;
+            }
+            .hero-content .date {
+                font-size: 26px;
             }
         }
     </style>
 </head>
 <body>
 
-<!-- ГЛАВНЫЙ ЭКРАН С ФОТО -->
+<!-- ГЛАВНЫЙ ЭКРАН -->
 <section class="hero">
     <div class="hero-content">
         <h1>Әрсен &amp; Айнар</h1>
         <p>үйлену тойына шақыру</p>
-        <p class="date">12 қыркүйек 2026 жыл</p>
-        <a href="#map" class="btn">Мекенжай</a>
+        <div class="date">12 қыркүйек 2026 жыл</div>
+        <a href="#map" class="btn-gold">Мекенжай</a>
     </div>
 </section>
 
 <!-- ПРИГЛАШЕНИЕ -->
-<section class="section" style="background: #f5f0eb;">
-    <p style="font-size: 24px; line-height: 1.8;">
+<section class="section section-beige" id="invitation">
+    <div class="invitation-text">
         Құрметті ағайын - туыс, Құда - жекжат, дос - жарандар!<br><br>
         Сіздерді балаларымыз Әрсен мен Айнардың<br>
         2026 жылы қыркүйек айының 12-сі өтетін үйлену тойының<br>
         қадірлі қонағы болуларыңызға шақырамыз!
-    </p>
-    <p style="font-size: 20px; color: #777; margin-top: 20px;">
-        Той иелері: Көбейхан &amp; Жанна
-    </p>
+        <span class="owners">Той иелері: Көбейхан &amp; Жанна</span>
+    </div>
 </section>
 
 <!-- INSTAGRAM -->
-<section class="section" style="background: #f5f0eb;">
+<section class="section section-beige" id="instagram">
     <h2>Әрсен &amp; Айнар тойының сәттері</h2>
     <p>Фотосуреттеріңізді <a href="https://instagram.com/explore/tags/арсенайнар/" target="_blank">#ӘрсенАйнар</a> хэштегімен бөлісіңіз!</p>
-    <img src="https://raw.githubusercontent.com/pro100kz/1/main/img/iphone_instagram.jpg" alt="Instagram" style="width: 100%; max-width: 400px; border-radius: 10px; margin-top: 20px;">
+    <img src="https://raw.githubusercontent.com/pro100kz/1/main/img/iphone_instagram.jpg" alt="Instagram" class="instagram-img">
 </section>
 
 <!-- МЕКЕНЖАЙ -->
-<section class="section" id="map" style="background: #ffffff;">
+<section class="section section-white" id="map">
     <h2>Той өтетін орын</h2>
-    <div style="background: #f9f9f9; padding: 30px; border-radius: 10px; margin: 20px 0;">
-        <h3 style="font-size: 26px; color: #e91e63;">Ресторан "Қаратал"</h3>
-        <p style="font-size: 18px;"><strong>Мекенжай:</strong></p>
-        <p style="font-size: 16px;">
-            Қаблыса Жырау көшесі 198<br>
-            Талдықорған қаласы<br>
-            Жетісу облысы
-        </p>
-        <a href="https://go.2gis.com/AaoTl" target="_blank" class="btn" style="display: inline-block; margin-top: 10px;">2GIS-те көру</a>
+    <div class="venue-box">
+        <h3>Ресторан "Қаратал"</h3>
+        <p class="address">Мекенжай:</p>
+        <p>Қаблыса Жырау көшесі 198</p>
+        <p>Талдықорған қаласы</p>
+        <p>Жетісу облысы</p>
+        <a href="https://go.2gis.com/AaoTl" target="_blank" class="btn-map">2GIS-те көру</a>
     </div>
 
-    <h3>Байланыс</h3>
-    <div class="contact"><strong>Әрсен</strong><br><a href="tel://+77053364500">+7 705 336 45 00</a></div>
-    <div class="contact"><strong>Айнар</strong><br><a href="tel://+77011429810">+7 701 142 98 10</a></div>
-    <div class="contact"><strong>Көбейхан</strong><br><a href="tel://+87777802313">8 777 780 23 13</a></div>
-    <div class="contact"><strong>Жанна</strong><br><a href="tel://+87051864566">8 705 186 45 66</a></div>
-    <p style="font-size: 14px; color: #999; margin-top: 15px;">WhatsApp арқылы да хабарласуға болады</p>
+    <h2 style="margin-top: 30px;">Байланыс</h2>
+    <div class="contact-item">
+        <strong>Әрсен</strong>
+        <a href="tel://+77053364500">+7 705 336 45 00</a>
+    </div>
+    <div class="contact-item">
+        <strong>Айнар</strong>
+        <a href="tel://+77011429810">+7 701 142 98 10</a>
+    </div>
+    <div class="contact-item">
+        <strong>Көбейхан</strong>
+        <a href="tel://+87777802313">8 777 780 23 13</a>
+    </div>
+    <div class="contact-item">
+        <strong>Жанна</strong>
+        <a href="tel://+87051864566">8 705 186 45 66</a>
+    </div>
+    <p class="whatsapp-note">📱 WhatsApp арқылы да хабарласуға болады</p>
 </section>
 
 <!-- ФУТЕР -->
