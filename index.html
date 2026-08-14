@@ -15,14 +15,12 @@
         html, body {
             height: 100%;
             font-family: 'Georgia', serif;
-            background: #3e2723;
         }
 
         /* ГЛАВНЫЙ ЭКРАН — ФОТО НА ВЕСЬ ЭКРАН */
         .hero {
             background: url('https://raw.githubusercontent.com/pro100kz/1/main/img/logo-lg.png') no-repeat center center;
             background-size: cover;
-            height: 100vh;
             min-height: 100vh;
             width: 100%;
             display: flex;
@@ -32,6 +30,7 @@
             position: relative;
         }
 
+        /* Затемнение */
         .hero::before {
             content: '';
             position: absolute;
@@ -322,7 +321,7 @@
             }
         }
 
-        /* Для очень больших экранов */
+        /* Для больших экранов */
         @media (min-width: 1200px) {
             .hero-content h1 {
                 font-size: 72px;
