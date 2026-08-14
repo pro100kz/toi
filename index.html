@@ -197,7 +197,6 @@
             font-family: 'Book Antiqua', 'Georgia', serif;
         }
 
-        /* ЯКОРЬ ДЛЯ ПРОКРУТКИ */
         .anchor {
             display: block;
             position: relative;
@@ -218,6 +217,30 @@
             font-family: 'Book Antiqua', 'Georgia', serif;
         }
 
+        /* КНОПКА МУЗЫКИ */
+        .music-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+            background: #ffd700;
+            color: #3e2723;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: 0.3s;
+            font-family: 'Book Antiqua', 'Georgia', serif;
+        }
+
+        .music-btn:hover {
+            transform: scale(1.05);
+            background: #f5c400;
+        }
+
         @media (max-width: 600px) {
             .hero-content h1 { font-size: 38px; }
             .hero-content .subtitle { font-size: 20px; letter-spacing: 4px; }
@@ -228,6 +251,7 @@
             .arrow-down { font-size: 28px; }
             .contact-block a { font-size: 18px; }
             .section h2 { font-size: 28px; }
+            .music-btn { font-size: 14px; padding: 10px 16px; }
         }
     </style>
 </head>
@@ -268,7 +292,6 @@
         </div>
     </section>
 
-    <!-- ЯКОРЬ ДЛЯ ПРОКРУТКИ -->
     <span class="anchor" id="map"></span>
 
     <section class="section" style="background: #ffffff; max-width: 100%; padding: 60px 20px; scroll-margin-top: 100px;">
@@ -314,6 +337,50 @@
     <footer>
         <p>Әрсен &amp; Айнардың тойына қош келдіңіздер! ❤️</p>
     </footer>
+
+    <!-- === МУЗЫКА === -->
+    <audio id="bg-music" autoplay loop>
+        <source src="https://raw.githubusercontent.com/pro100kz/toi/main/img/videoplayback.m4a" type="audio/mp4">
+        <source src="https://raw.githubusercontent.com/pro100kz/toi/main/img/videoplayback.m4a" type="audio/x-m4a">
+        Ваш браузер не поддерживает аудио.
+    </audio>
+
+    <button class="music-btn" onclick="toggleMusic()" id="musicBtn">
+        🔊 Музыка
+    </button>
+
+    <script>
+        var music = document.getElementById('bg-music');
+        var btn = document.getElementById('musicBtn');
+        var isPlaying = true;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+                isPlaying = false;
+                btn.innerHTML = '🔇 Музыка';
+            } else {
+                music.play();
+                isPlaying = true;
+                btn.innerHTML = '🔊 Музыка';
+            }
+        }
+
+        // Если музыка не запустилась автоматически (из-за политики браузера)
+        document.addEventListener('click', function() {
+            if (music.paused) {
+                music.play().catch(function() {});
+                isPlaying = true;
+                btn.innerHTML = '🔊 Музыка';
+            }
+        });
+
+        // Если музыка не загрузилась
+        music.onerror = function() {
+            btn.innerHTML = '🎵 Музыка не загружена';
+            btn.style.opacity = '0.5';
+        };
+    </script>
 
 </body>
 </html>
